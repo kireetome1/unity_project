@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
-   void OnCollisionEnter()
+    public PlayerMovements movement;
+
+
+   void OnCollisionEnter(Collision collisionInfo)
     {
-        Debug.Log("We hit something.");
+        if(collisionInfo.collider.tag == "Obstacle")
+        {
+            movement.enabled = false;
+            Application.Quit();
+        }
     }
 }
